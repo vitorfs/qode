@@ -1,0 +1,35 @@
+.login {
+  background-color: #eeeeee;
+  width: 400px;
+  margin: 5em auto 0;
+  padding: 3em;
+  border-radius: 0.5em;
+}
+
+.login h2 {
+  font-size: 3em;
+  margin: 0 0 .7em 0;
+}
+
+.login label, .login input {
+  display: block;
+}
+
+.login label {
+  font-size: 2.2em;
+  font-weight: 200;
+  margin-bottom: 0.6em;
+}
+
+.login input {
+  font-size: 2em;
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+
+.login button {
+  font-size: 2em;
+  line-height: 48px;
+  margin-left: 0;
+  width: 100%;
+}

@@ -1,41 +1,25 @@
-"""
-Django settings for qode project.
+from unipath import Path
+import dj_database_url
+from decouple import config
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
+PROJECT_DIR = Path(__file__).parent.parent
 
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
+SECRET_KEY = config('SECRET_KEY')
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+DEBUG = config('DEBUG', default=False, cast=bool) 
 
+TEMPLATE_DEBUG = DEBUG
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w$@_pm9rnn&(+p-sn3^230h!key4ls#xbd^r@tg0_#b(&ojv_&'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
+ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'auth',
+    'quiz',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,23 +35,14 @@ ROOT_URLCONF = 'qode.urls'
 
 WSGI_APPLICATION = 'qode.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+      default = config('DATABASE_URL'))
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+LANGUAGE_CODE = 'pt-br'
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -75,8 +50,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+STATIC_ROOT = PROJECT_DIR.parent.child('static')
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    PROJECT_DIR.child('static'),
+)
+
+TEMPLATE_DIRS = (
+    PROJECT_DIR.child('templates'),
+)

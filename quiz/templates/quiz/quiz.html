@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <h2>Avaliação Conhecimento em Java</h2>
+  <ul class="quiz-questions">
+    <li><a href="#">Questão 1</a></li>
+    <li><a href="#">Questão 2</a></li>
+    <li><a href="#">Questão 3</a></li>
+    <li><a href="#">Questão 4</a></li>
+    <li><a href="#">Questão 5</a></li>
+  </ul>
+  <h3>Questão 1</h3>
+  <p>O que o seguinte programa (dado na forma de pseucódigo) imprime?</p>
+  <pre><code class="language-java">public static String zeroFill(String value, int range){
+      String zerofill="";
+      for (int i=value.length();i&lt;range;i++,zerofill+="0");
+      return zerofill+value;        
+  }</code></pre>
+  <p>Resposta:</p>
+  <form method="post">
+    <textarea name="answer" id="answer"></textarea>
+    <div class="actions">
+      <button type="button" class="btn">Anterior</button>
+      <button type="button" class="btn">Próximo</button>
+    </div>
+  </form>
+{% endblock main %}

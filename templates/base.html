@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Qode{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/layout.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/prism.css">
+</head>
+<body>
+  <header>
+    <div class="wrapper">
+      <h1>Qode</h1>
+    </div>
+  </header>
+  <main>
+    <div class="wrapper">
+      {% block main %}
+      {% endblock main %}
+    </div>
+  </main>
+  <script src="{{ STATIC_URL }}js/prism.js"></script>
+</body>
+</html>
